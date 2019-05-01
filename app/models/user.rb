@@ -2,7 +2,11 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email, :phone
 
   has_many :event_responses
- has_many :events, :through => :event_responses
+  has_many :events, :through => :event_responses
+
+  validates :username, :title => { :message => "Please enter the username" }
+  validates :email, :title => { :message => "Please enter the email" }
+  validates :phone, :title => { :message => "Please enter the phone" }
 
   def self.import(file)
       spreadsheet = open_spreadsheet(file)

@@ -4,6 +4,10 @@ class Event < ActiveRecord::Base
     has_many :event_responses
    has_many :users, :through => :event_responses
 
+   validates :name, :title => { :message => "Please enter the title" }
+   validates :name, :starttime => { :message => "Please enter the start date and time" }
+   validates :name, :endtime => { :message => "Please enter the end date and time" }
+
 
     def overlaps?(other)
         self.starttime <= other.endtime && other.starttime <= self.endtime
