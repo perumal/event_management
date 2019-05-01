@@ -1,0 +1,8 @@
+<% method_type = method_type || :post %>
+<%= form_for "report", :url => form_url, :method => method_type, :html => { :class => "report_dates" } do |f| %>
+<span>Start Date : </span>
+<input class="datepicker" name="start_date" readonly="readonly" size="50" type="text" value="<%= @start_date.strftime("%d-%b-%Y") %>" />
+<span>End Date : </span>
+<input class="datepicker" name="end_date" readonly="readonly" size="50" type="text" value="<%= @end_date.strftime("%d-%b-%Y") %>" />
+<input name="commit" type="submit" value="submit"  class="btn btn-small btn-primary report_submit" />
+<% end %>

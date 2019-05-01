@@ -1,0 +1,24 @@
+<%= form_for @event do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :starttime %><br />
+    <%= f.datetime_select :starttime %>
+  </p>
+  <p>
+    <%= f.label :endtime %><br />
+    <%= f.datetime_select :endtime %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :allday %><br />
+    <%= f.check_box :allday %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

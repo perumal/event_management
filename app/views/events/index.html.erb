@@ -1,0 +1,37 @@
+<h1>Events</h1> <br><br>
+
+<%= render 'report_dates_form', :form_url => "/events", :method_type => :get %>
+
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Starttime</th>
+    <th>Endtime</th>
+    <th>Description</th>
+    <th>Allday</th>
+    <th>Number of Users Attending</th>
+    <th></th>
+  </tr>
+  <% for event in @events %>
+    <tr>
+      <td><%= event.title %></td>
+      <td><%= event.starttime.strftime("%d-%b-%y %I:%M %P") %></td>
+      <td><%= event.endtime.strftime("%d-%b-%y %I:%M %P") %></td>
+      <td><%= event.description %></td>
+      <td><%= event.allday %></td>
+      <td><%= event.users.count %></td>
+      <td><%= link_to "Show", event %> |
+          <%= link_to "Edit", edit_event_path(event) %> |
+          <%= link_to "Destroy", event, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Event", new_event_path %></p>
+
+
+<h2>Import Events</h2>
+<%= form_tag import_events_path, multipart: true do %>
+<%= file_field_tag :file %>
+<%= submit_tag "Import" %>
+<% end %>
